@@ -120,6 +120,9 @@ bool HelloWorld::init()
 
 	counter = 0;
 
+	// 左移動
+	state = 0;
+
     return true;
 }
 
@@ -139,12 +142,39 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	//// 現在の座標を取得
-	//Vec2 pos = sprite->getPosition();
-	//// 座標をずらす
-	//pos += Vec2(-5.0f, 0.0f);
-	//// 座標を反映
-	//sprite->setPosition(pos);
+	Vec2 pos;
+	switch (state)
+	{
+	case 0:// 左移動
+		// 現在の座標を取得
+		pos = sprite->getPosition();
+		// 座標をずらす
+		pos += Vec2(-5.0f, 0.0f);
+		// 座標を反映
+		sprite->setPosition(pos);
+		if (pos.x <= 100)
+		{
+			state = 1; // 下移動に切り替え
+		}
+		break;
+	case 1:// 下移動
+		// 現在の座標を取得
+		pos = sprite->getPosition();
+		// 座標をずらす
+		pos += Vec2(0.0f, -5.0f);
+		// 座標を反映
+		sprite->setPosition(pos);
+		if (pos.y <= 100)
+		{
+			state = 2; // 下移動に切り替え
+		}
+		break;
+	case 2:// 右移動
+		break;
+	case 3:// 上移動
+		break;
+	}
+
 
 	//counter++;
 
