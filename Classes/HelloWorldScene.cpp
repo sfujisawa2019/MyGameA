@@ -104,9 +104,8 @@ bool HelloWorld::init()
     // ここにコードを書く
 	sprite = Sprite::create("harinezumi.png");
 	this->addChild(sprite);
-
-	//                        X     Y
-	sprite->setPosition(Vec2(640, 360));
+	sprite->setPosition(Vec2(1280-100, 720-100));
+	sprite->setScale(0.2f);
 
 	//sprite->setVisible(true);
 
@@ -141,8 +140,7 @@ void HelloWorld::update(float delta)
 	// 現在の座標を取得
 	Vec2 pos = sprite->getPosition();
 	// 座標をずらす
-	pos += Vec2(1.0f, 1.0f);
-	//pos.x += 5.0f;
+	pos += Vec2(-5.0f, 0.0f);
 	// 座標を反映
 	sprite->setPosition(pos);
 }
