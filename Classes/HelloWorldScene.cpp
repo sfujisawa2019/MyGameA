@@ -1,4 +1,4 @@
-/****************************************************************************
+﻿/****************************************************************************
  Copyright (c) 2017-2018 Xiamen Yaji Software Co., Ltd.
  
  http://www.cocos2d-x.org
@@ -101,20 +101,24 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-    // add "HelloWorld" splash screen"
-    auto sprite = Sprite::create("HelloWorld.png");
-    if (sprite == nullptr)
-    {
-        problemLoading("'HelloWorld.png'");
-    }
-    else
-    {
-        // position the sprite on the center of the screen
-        sprite->setPosition(Vec2(visibleSize.width/2 + origin.x, visibleSize.height/2 + origin.y));
+    // ここにコードを書く
+	sprite = Sprite::create("harinezumi.png");
+	this->addChild(sprite);
 
-        // add the sprite as a child to this layer
-        this->addChild(sprite, 0);
-    }
+	//                        X     Y
+	sprite->setPosition(Vec2(640, 360));
+
+	//sprite->setVisible(true);
+
+	//sprite->setRotation(90.0f);
+	//                        R   G    B
+	//sprite->setColor(Color3B(255, 255, 255));
+
+	//sprite->setOpacity(128);
+
+	// updateを有効にする
+	this->scheduleUpdate();
+
     return true;
 }
 
@@ -130,4 +134,15 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
     //_eventDispatcher->dispatchEvent(&customEndEvent);
 
 
+}
+
+void HelloWorld::update(float delta)
+{
+	// 現在の座標を取得
+	Vec2 pos = sprite->getPosition();
+	// 座標をずらす
+	pos += Vec2(1.0f, 1.0f);
+	//pos.x += 5.0f;
+	// 座標を反映
+	sprite->setPosition(pos);
 }
