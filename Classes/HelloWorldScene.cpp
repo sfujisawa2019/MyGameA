@@ -146,19 +146,19 @@ void HelloWorld::update(float delta)
 	//// 座標を反映
 	//sprite->setPosition(pos);
 
-	counter++;
+	//counter++;
 
-	// 5秒かけて0~255で変化させたい
-	// 300frmかけて0~255で変化させたい
-	float opacity = counter / 300.0f * 255.0f;
-	// 0のとき255
-	// 128のとき127
-	// 255のとき0
-	opacity = 255 - opacity;
-	if (opacity < 0)
-	{
-		opacity = 0;
-	}
+	//// 5秒かけて0~255で変化させたい
+	//// 300frmかけて0~255で変化させたい
+	//float opacity = counter / 300.0f * 255.0f;
+	//// 0のとき255
+	//// 128のとき127
+	//// 255のとき0
+	//opacity = 255 - opacity;
+	//if (opacity < 0)
+	//{
+	//	opacity = 0;
+	//}
 
-	sprite->setOpacity(opacity);
+	//sprite->setOpacity(opacity);
 }
