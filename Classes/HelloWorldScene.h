@@ -43,6 +43,8 @@ public:
     CREATE_FUNC(HelloWorld);
 
 	cocos2d::Sprite* sprite;
+
+	int counter;
 };
 
 #endif // __HELLOWORLD_SCENE_H__
