@@ -102,13 +102,15 @@ bool HelloWorld::init()
     }
 
     // ここにコードを書く
-	sprite = Sprite::create("sample05.png");
+	sprite = Sprite::create("harinezumi.png");
 	this->addChild(sprite);
 	sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
 	// Spriteの基準点を指定する
-	//sprite->setAnchorPoint(Vec2(1, 1));
+	// (0,0)・・・左下
+	// (1,1)・・・右上
+	sprite->setAnchorPoint(Vec2(0, 1));
 
-	sprite->setScale(5.0f);
+	sprite->setScale(0.5f);
 
 	//sprite->setVisible(true);
 
@@ -118,9 +120,9 @@ bool HelloWorld::init()
 	//sprite->setColor(Color3B(0, 0, 255));
 	//sprite->setFlippedX(true);
 	//                           X    Y    W    H
-	sprite->setTextureRect(Rect(32, 32, 32, 32));
+	//sprite->setTextureRect(Rect(32, 32, 32, 32));
 
-	sprite->setOpacity(255);
+	//sprite->setOpacity(255);
 
 	// updateを有効にする
 	this->scheduleUpdate();
@@ -129,6 +131,8 @@ bool HelloWorld::init()
 
 	// 左移動
 	state = 0;
+
+	rot = 0;
 
     return true;
 }
@@ -149,5 +153,6 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-
+	rot += 1.0f;
+	sprite->setRotation(rot);
 }
