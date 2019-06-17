@@ -49,7 +49,7 @@ bool HelloWorld::init()
         return false;
     }
 
-    auto visibleSize = Director::getInstance()->getVisibleSize();
+    Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
     /////////////////////////////
@@ -102,16 +102,23 @@ bool HelloWorld::init()
     }
 
     // ここにコードを書く
-	sprite = Sprite::create("harinezumi.png");
+	sprite = Sprite::create("sample05.png");
 	this->addChild(sprite);
-	sprite->setPosition(Vec2(1280-100, 720-100));
-	sprite->setScale(0.2f);
+	sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
+	// Spriteの基準点を指定する
+	//sprite->setAnchorPoint(Vec2(1, 1));
+
+	sprite->setScale(5.0f);
 
 	//sprite->setVisible(true);
 
-	//sprite->setRotation(90.0f);
+	//sprite->setRotation(135.0f);
 	//                        R   G    B
-	//sprite->setColor(Color3B(255, 255, 255));
+	//sprite->setColor(Color3B(255, 0, 0));
+	//sprite->setColor(Color3B(0, 0, 255));
+	//sprite->setFlippedX(true);
+	//                           X    Y    W    H
+	sprite->setTextureRect(Rect(32, 32, 32, 32));
 
 	sprite->setOpacity(255);
 
@@ -142,53 +149,5 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	Vec2 pos;
-	switch (state)
-	{
-	case 0:// 左移動
-		// 現在の座標を取得
-		pos = sprite->getPosition();
-		// 座標をずらす
-		pos += Vec2(-5.0f, 0.0f);
-		// 座標を反映
-		sprite->setPosition(pos);
-		if (pos.x <= 100)
-		{
-			state = 1; // 下移動に切り替え
-		}
-		break;
-	case 1:// 下移動
-		// 現在の座標を取得
-		pos = sprite->getPosition();
-		// 座標をずらす
-		pos += Vec2(0.0f, -5.0f);
-		// 座標を反映
-		sprite->setPosition(pos);
-		if (pos.y <= 100)
-		{
-			state = 2; // 下移動に切り替え
-		}
-		break;
-	case 2:// 右移動
-		break;
-	case 3:// 上移動
-		break;
-	}
 
-
-	//counter++;
-
-	//// 5秒かけて0~255で変化させたい
-	//// 300frmかけて0~255で変化させたい
-	//float opacity = counter / 300.0f * 255.0f;
-	//// 0のとき255
-	//// 128のとき127
-	//// 255のとき0
-	//opacity = 255 - opacity;
-	//if (opacity < 0)
-	//{
-	//	opacity = 0;
-	//}
-
-	//sprite->setOpacity(opacity);
 }

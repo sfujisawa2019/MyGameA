@@ -43,6 +43,7 @@ public:
     CREATE_FUNC(HelloWorld);
 
 	cocos2d::Sprite* sprite;
+	//cocos2d::Sprite* sprite2;
 
 	int counter;
 
