@@ -51,6 +51,8 @@ public:
 	int state;
 
 	float rot;
+
+	float blue;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

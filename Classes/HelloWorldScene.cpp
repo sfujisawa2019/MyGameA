@@ -115,9 +115,7 @@ bool HelloWorld::init()
 	//sprite->setVisible(true);
 
 	//sprite->setRotation(135.0f);
-	//                        R   G    B
-	//sprite->setColor(Color3B(255, 0, 0));
-	//sprite->setColor(Color3B(0, 0, 255));
+
 	//sprite->setFlippedX(true);
 	//                           X    Y    W    H
 	//sprite->setTextureRect(Rect(32, 32, 32, 32));
@@ -133,6 +131,8 @@ bool HelloWorld::init()
 	state = 0;
 
 	rot = 0;
+
+	blue = 0;
 
     return true;
 }
@@ -153,6 +153,20 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	rot += 1.0f;
-	sprite->setRotation(rot);
+	// 180frmで255にする
+	// 255 / 180　を１回につき加算
+	blue += 255.0f / 180.0f;
+	// 最大値を超えないように制限
+	if (blue > 255.0f)
+	{
+		blue = 255.0f;
+	}
+	sprite->setColor(Color3B(255-blue, 0, blue));
+
+	//                        R   G    B
+	//sprite->setColor(Color3B(255, 0, 0));
+	//sprite->setColor(Color3B(0, 0, 255));
+
+	//rot += 1.0f;
+	//sprite->setRotation(rot);
 }
