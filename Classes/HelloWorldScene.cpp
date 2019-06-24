@@ -105,6 +105,17 @@ bool HelloWorld::init()
 	sprite = Sprite::create("nezumi.jpg");
 	this->addChild(sprite);
 	sprite->setPosition(Vec2(visibleSize.width/2.0f, visibleSize.height/2.0f));
+	//sprite->setScale(0.1f);
+
+	MoveBy* action1 = MoveBy::create(1.0f, Vec2(200, 100));
+	//ScaleTo* action1 = ScaleTo::create(1.0f, 5.0f);
+	//JumpBy* action1 = JumpBy::create(1.0f, Vec2(200, 0), 300, 3);
+	//ccBezierConfig conf;
+	//conf.controlPoint_1 = Vec2(200, 200);
+	//conf.controlPoint_2 = Vec2(500, 200);
+	//conf.endPosition = Vec2(500, 500);
+	//BezierTo* action1 = BezierTo::create(2.0f, conf);
+	sprite->runAction(action1);
 	// Spriteの基準点を指定する
 	// (0,0)・・・左下
 	// (1,1)・・・右上
