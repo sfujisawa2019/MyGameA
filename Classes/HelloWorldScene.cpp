@@ -106,18 +106,20 @@ bool HelloWorld::init()
 	this->addChild(sprite);
 	sprite->setPosition(Vec2(200, visibleSize.height/2.0f));
 	sprite->setScale(0.1f);
-	//action1の生成////////////////
-	MoveBy* action1 = MoveBy::create(1.0f, Vec2(200, 100));
-	sprite->runAction(action1);
 
 	//sprite2の生成
 	sprite2 = Sprite::create("harinezumi.png");
 	this->addChild(sprite2);
 	sprite2->setPosition(Vec2(600, visibleSize.height / 2.0f));
 	sprite2->setScale(0.1f);
-	//action2の生成
-	MoveBy* action2 = MoveBy::create(1.0f, Vec2(200, 100));
-	sprite2->runAction(action2);
+
+	//action1の生成////////////////
+	MoveBy* action1 = MoveBy::create(1.0f, Vec2(200, 100));
+	sprite->runAction(action1);
+	sprite2->runAction(action1->clone());
+	////action2の生成
+	//MoveBy* action2 = MoveBy::create(1.0f, Vec2(200, 100));
+	//sprite2->runAction(action2);
 
 	//EaseInOut* action2 = EaseInOut::create(action1, 3.0f);
 	//ScaleTo* action1 = ScaleTo::create(1.0f, 5.0f);
