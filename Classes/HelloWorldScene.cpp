@@ -101,22 +101,34 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-    //spriteの生成/////////////////
-	sprite = Sprite::create("nezumi.jpg");
-	this->addChild(sprite);
-	sprite->setPosition(Vec2(200, visibleSize.height/2.0f));
-	sprite->setScale(0.1f);
+	for( int i = 0; i < 5; i++)
+	{
+		sprite[i] = Sprite::create("nezumi.jpg");
+		this->addChild(sprite[i]);
+		sprite[i]->setPosition(Vec2(i*200, visibleSize.height / 2.0f));
+		sprite[i]->setScale(0.1f);
 
-	//sprite2の生成
-	sprite2 = Sprite::create("harinezumi.png");
-	this->addChild(sprite2);
-	sprite2->setPosition(Vec2(600, visibleSize.height / 2.0f));
-	sprite2->setScale(0.1f);
+		MoveBy* action1 = MoveBy::create(1.0f, Vec2(200, 100));
+		sprite[i]->runAction(action1);
+	}
 
-	//action1の生成////////////////
-	MoveBy* action1 = MoveBy::create(1.0f, Vec2(200, 100));
-	sprite->runAction(action1);
-	sprite2->runAction(action1->clone());
+ //   //spriteの生成/////////////////
+	//sprite = Sprite::create("nezumi.jpg");
+	//this->addChild(sprite);
+	//sprite->setPosition(Vec2(200, visibleSize.height/2.0f));
+	//sprite->setScale(0.1f);
+
+	////sprite2の生成
+	//sprite2 = Sprite::create("harinezumi.png");
+	//this->addChild(sprite2);
+	//sprite2->setPosition(Vec2(600, visibleSize.height / 2.0f));
+	//sprite2->setScale(0.1f);
+
+	////action1の生成////////////////
+	//MoveBy* action1 = MoveBy::create(1.0f, Vec2(200, 100));
+	//sprite->runAction(action1);
+	//sprite2->runAction(action1->clone());
+
 	////action2の生成
 	//MoveBy* action2 = MoveBy::create(1.0f, Vec2(200, 100));
 	//sprite2->runAction(action2);
