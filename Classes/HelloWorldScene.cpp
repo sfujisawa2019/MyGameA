@@ -105,49 +105,39 @@ bool HelloWorld::init()
 	// Random r = new Random();
 	srand(time(nullptr));
 
-	for( int i = 0; i < 5; i++)
-	{
-		sprite[i] = Sprite::create("nezumi.jpg");
-		this->addChild(sprite[i]);
-		sprite[i]->setPosition(Vec2(i*200, visibleSize.height / 2.0f));
-		sprite[i]->setScale(0.1f);
+	///sprite/////////////////
+	sprite = Sprite::create("nezumi.jpg");
+	this->addChild(sprite);
+	sprite->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	sprite->setScale(0.1f);
 
-		float mx, my;
-		mx = (float)rand()/RAND_MAX * 500;
-		my = (float)rand()/RAND_MAX * 500;
-		MoveBy* action1 = MoveBy::create(1.0f, Vec2(mx, my));
-		sprite[i]->runAction(action1);
-	}
+	//////////////////sprite2
+	sprite2 = Sprite::create("harinezumi.png");
+	this->addChild(sprite2);
+	sprite2->setPosition(Vec2(300, 300));
+	sprite2->setScale(0.1f);
 
- //   //spriteの生成/////////////////
-	//sprite = Sprite::create("nezumi.jpg");
-	//this->addChild(sprite);
-	//sprite->setPosition(Vec2(200, visibleSize.height/2.0f));
-	//sprite->setScale(0.1f);
+	//////////////////action1
+	JumpBy* action1 = JumpBy::create(1.0f, Vec2(300, 0), 300, 1);
+	sprite->runAction(action1->clone());
+	sprite2->runAction(action1->clone());
+	////////////////////////
 
-	////sprite2の生成
-	//sprite2 = Sprite::create("harinezumi.png");
-	//this->addChild(sprite2);
-	//sprite2->setPosition(Vec2(600, visibleSize.height / 2.0f));
-	//sprite2->setScale(0.1f);
+	//for( int i = 0; i < 5; i++)
+	//{
+	//	sprite[i] = Sprite::create("nezumi.jpg");
+	//	this->addChild(sprite[i]);
+	//	sprite[i]->setPosition(Vec2(i*200, visibleSize.height / 2.0f));
+	//	sprite[i]->setScale(0.1f);
 
-	////action1の生成////////////////
-	//MoveBy* action1 = MoveBy::create(1.0f, Vec2(200, 100));
-	//sprite->runAction(action1);
-	//sprite2->runAction(action1->clone());
+	//	float mx, my;
+	//	mx = (float)rand()/RAND_MAX * 500;
+	//	my = (float)rand()/RAND_MAX * 500;
+	//	MoveBy* action1 = MoveBy::create(1.0f, Vec2(mx, my));
+	//	sprite[i]->runAction(action1);
+	//}
 
-	////action2の生成
-	//MoveBy* action2 = MoveBy::create(1.0f, Vec2(200, 100));
-	//sprite2->runAction(action2);
-
-	//EaseInOut* action2 = EaseInOut::create(action1, 3.0f);
-	//ScaleTo* action1 = ScaleTo::create(1.0f, 5.0f);
-	//JumpBy* action1 = JumpBy::create(1.0f, Vec2(200, 0), 300, 3);
-	//ccBezierConfig conf;
-	//conf.controlPoint_1 = Vec2(200, 200);
-	//conf.controlPoint_2 = Vec2(500, 200);
-	//conf.endPosition = Vec2(500, 500);
-	//BezierTo* action1 = BezierTo::create(2.0f, conf);
+ 
 	// Spriteの基準点を指定する
 	// (0,0)・・・左下
 	// (1,1)・・・右上
