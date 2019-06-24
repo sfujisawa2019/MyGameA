@@ -112,9 +112,9 @@ bool HelloWorld::init()
 
 	//sprite->setScale(0.5f);
 
-	sprite2 = Sprite::create("harinezumi.png");
-	this->addChild(sprite2);
-	sprite2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	//sprite2 = Sprite::create("harinezumi.png");
+	//this->addChild(sprite2);
+	//sprite2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
 
 
 	//sprite->setVisible(true);
@@ -130,16 +130,16 @@ bool HelloWorld::init()
 	// updateを有効にする
 	this->scheduleUpdate();
 
-	counter = 0;
+	//counter = 0;
 
-	// 左移動
-	state = 0;
+	//// 左移動
+	//state = 0;
 
-	rot = 0;
+	//rot = 0;
 
-	blue = 0;
+	//blue = 0;
 
-	opacity = 0;
+	//opacity = 0;
 
     return true;
 }
@@ -160,31 +160,4 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	opacity += 1.0f;
-	// 最大値を超えないように制限
-	if (opacity > 255.0f)
-	{
-		opacity = 255.0f;
-	}
-	// ネズミがフェードアウト
-	sprite->setOpacity(255 - opacity);
-	// ハリネズミがフェードイン
-	sprite2->setOpacity(opacity);
-
-	// 180frmで255にする
-	// 255 / 180　を１回につき加算
-	//blue += 255.0f / 180.0f;
-	//// 最大値を超えないように制限
-	//if (blue > 255.0f)
-	//{
-	//	blue = 255.0f;
-	//}
-	//sprite->setColor(Color3B(255-blue, 0, blue));
-
-	//                        R   G    B
-	//sprite->setColor(Color3B(255, 0, 0));
-	//sprite->setColor(Color3B(0, 0, 255));
-
-	//rot += 1.0f;
-	//sprite->setRotation(rot);
 }
