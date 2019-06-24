@@ -105,39 +105,35 @@ bool HelloWorld::init()
 	// Random r = new Random();
 	srand(time(nullptr));
 
-	///sprite/////////////////
-	sprite = Sprite::create("nezumi.jpg");
-	this->addChild(sprite);
-	sprite->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	sprite->setScale(0.1f);
+	/////sprite/////////////////
+	//sprite = Sprite::create("nezumi.jpg");
+	//this->addChild(sprite);
+	//sprite->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	//sprite->setScale(0.1f);
 
-	//////////////////sprite2
-	sprite2 = Sprite::create("harinezumi.png");
-	this->addChild(sprite2);
-	sprite2->setPosition(Vec2(300, 300));
-	sprite2->setScale(0.1f);
+	////////////////////sprite2
+	//sprite2 = Sprite::create("harinezumi.png");
+	//this->addChild(sprite2);
+	//sprite2->setPosition(Vec2(300, 300));
+	//sprite2->setScale(0.1f);
 
-	//////////////////action1
-	JumpBy* action1 = JumpBy::create(1.0f, Vec2(300, 0), 300, 1);
-	sprite->runAction(action1->clone());
-	sprite2->runAction(action1->clone());
-	////////////////////////
+	////////////////////action1
+	//JumpBy* action1 = JumpBy::create(1.0f, Vec2(300, 0), 300, 1);
+	//sprite->runAction(action1->clone());
+	//sprite2->runAction(action1->clone());
+	//////////////////////////
 
-	//for( int i = 0; i < 5; i++)
-	//{
-	//	sprite[i] = Sprite::create("nezumi.jpg");
-	//	this->addChild(sprite[i]);
-	//	sprite[i]->setPosition(Vec2(i*200, visibleSize.height / 2.0f));
-	//	sprite[i]->setScale(0.1f);
+	for (int i = 0; i < 10; i++)
+	{
+		sprite[i] = Sprite::create("nezumi.jpg");
+		this->addChild(sprite[i]);
+		sprite[i]->setPosition(Vec2(100 * i, visibleSize.height / 2.0f));
+		sprite[i]->setScale(0.1f);
 
-	//	float mx, my;
-	//	mx = (float)rand()/RAND_MAX * 500;
-	//	my = (float)rand()/RAND_MAX * 500;
-	//	MoveBy* action1 = MoveBy::create(1.0f, Vec2(mx, my));
-	//	sprite[i]->runAction(action1);
-	//}
+		JumpBy* action1 = JumpBy::create(1.0f, Vec2(300, 0), 300, 1);
+		sprite[i]->runAction(action1);
+	}
 
- 
 	// Spriteの基準点を指定する
 	// (0,0)・・・左下
 	// (1,1)・・・右上
