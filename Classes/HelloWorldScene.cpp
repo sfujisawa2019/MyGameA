@@ -108,27 +108,16 @@ bool HelloWorld::init()
 	spr->setScale(0.2f);
 
 	// 移動アクションの生成
-	MoveTo* moveLeft = MoveTo::create(5.0f, Vec2(100, visibleSize.height - 100));
-	MoveTo* moveRight = MoveTo::create(5.0f, Vec2(visibleSize.width - 100, visibleSize.height - 100));
+	MoveBy* moveLeft = MoveBy::create(1.0f, Vec2(-(visibleSize.width - 200), 0));
+	MoveBy* moveDown = MoveBy::create(1.0f, Vec2(0, -(visibleSize.height - 200)));
+	MoveBy* moveRight = MoveBy::create(1.0f, Vec2(visibleSize.width - 200, 0));
+	MoveBy* moveUp = MoveBy::create(1.0f, Vec2(0, visibleSize.height - 200));
 
 	// 連続アクションの生成
-	Sequence* seq1 = Sequence::create(moveLeft, moveRight, nullptr);
-
-	// フェードアクションの生成
-	FadeOut* fadeOut = FadeOut::create(5.0f);
-	FadeIn* fadeIn = FadeIn::create(5.0f);
-
-	// 連続アクションの生成
-	Sequence* seq2 = Sequence::create(fadeOut, fadeIn, nullptr);
-
-	// 同時アクションの生成
-	Spawn* spawn = Spawn::create(seq1, seq2, nullptr);
-
-	// 繰り返しアクションの生成
-	Repeat* allAction = Repeat::create(spawn, 5);
+	Sequence* seq1 = Sequence::create(moveLeft, moveDown, moveRight, moveUp, nullptr);
 
 	// アクションの実行
-	spr->runAction(allAction);
+	spr->runAction(seq1);
 
 	// updateを有効にする
 	this->scheduleUpdate();
