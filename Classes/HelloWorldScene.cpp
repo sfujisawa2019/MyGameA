@@ -108,7 +108,7 @@ bool HelloWorld::init()
 	// 移動アクションの生成
 	JumpBy* action1 = JumpBy::create(1.0f, Vec2(100.0f, 100.0f), 100,1);
 	// 繰り返しアクションの生成
-	Repeat* action2 = Repeat::create(action1, 2);
+	RepeatForever* action2 = RepeatForever::create(action1);
 
 	TintTo* action3 = TintTo::create(1.0f, Color3B(255, 255, 0));
 	// 連続アクションの生成
