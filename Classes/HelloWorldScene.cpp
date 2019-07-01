@@ -105,16 +105,14 @@ bool HelloWorld::init()
 	Sprite* spr = Sprite::create("HelloWorld.png");
 	this->addChild(spr);
 	spr->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	// 待機アクションの生成
+	DelayTime* action1 = DelayTime::create(2.0f);
 	// 移動アクションの生成
-	JumpBy* action1 = JumpBy::create(1.0f, Vec2(100.0f, 100.0f), 100,1);
-	// 繰り返しアクションの生成
-	RepeatForever* action2 = RepeatForever::create(action1);
-
-	TintTo* action3 = TintTo::create(1.0f, Color3B(255, 255, 0));
+	JumpBy* action2 = JumpBy::create(1.0f, Vec2(100.0f, 100.0f), 100,1);
 	// 連続アクションの生成
-	Sequence* action4 = Sequence::create(action2, action3, nullptr);
+	Sequence* action3 = Sequence::create(action1, action2, nullptr);
 	// アクションの実行
-	spr->runAction(action4);
+	spr->runAction(action3);
 
 	// updateを有効にする
 	this->scheduleUpdate();
