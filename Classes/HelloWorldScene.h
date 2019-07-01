@@ -41,23 +41,6 @@ public:
     
     // implement the "static create()" method manually
     CREATE_FUNC(HelloWorld);
-
-	//cocos2d::Sprite* sprite;
-	//cocos2d::Sprite* sprite2;
-
-	// Spriteの配列
-	cocos2d::Sprite* sprite[100];
-
-	//int counter;
-
-	//// 移動方向 0:左移動 1:下移動 2:右移動 3:上移動
-	//int state;
-
-	//float rot;
-
-	//float blue;
-
-	//float opacity;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

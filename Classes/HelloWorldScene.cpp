@@ -101,82 +101,21 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-	// 乱数の初期化
-	// Random r = new Random();
-	srand(time(nullptr));
-
-	/////sprite/////////////////
-	//sprite = Sprite::create("nezumi.jpg");
-	//this->addChild(sprite);
-	//sprite->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	//sprite->setScale(0.1f);
-
-	////////////////////sprite2
-	//sprite2 = Sprite::create("harinezumi.png");
-	//this->addChild(sprite2);
-	//sprite2->setPosition(Vec2(300, 300));
-	//sprite2->setScale(0.1f);
-
-	////////////////////action1
-	//JumpBy* action1 = JumpBy::create(1.0f, Vec2(300, 0), 300, 1);
-	//sprite->runAction(action1->clone());
-	//sprite2->runAction(action1->clone());
-	//////////////////////////
-
-	for (int i = 0; i < 10; i++)
-	{
-		float sx, sy;
-		sx = (float)rand() / RAND_MAX * visibleSize.width;
-		sy = (float)rand() / RAND_MAX * visibleSize.height;
-
-		sprite[i] = Sprite::create("nezumi.jpg");
-		this->addChild(sprite[i]);
-		sprite[i]->setPosition(Vec2(sx, sy));
-		sprite[i]->setScale(0.1f);
-
-		float ex, ey;
-		ex = (float)rand() / RAND_MAX * visibleSize.width;
-		ey = (float)rand() / RAND_MAX * visibleSize.height;
-
-		MoveTo* action1 = MoveTo::create(1.0f, Vec2(ex, ey));
-		sprite[i]->runAction(action1);
-	}
-
-	// Spriteの基準点を指定する
-	// (0,0)・・・左下
-	// (1,1)・・・右上
-	//sprite->setAnchorPoint(Vec2(0, 1));
-
-	//sprite->setScale(0.5f);
-
-	//sprite2 = Sprite::create("harinezumi.png");
-	//this->addChild(sprite2);
-	//sprite2->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-
-
-	//sprite->setVisible(true);
-
-	//sprite->setRotation(135.0f);
-
-	//sprite->setFlippedX(true);
-	//                           X    Y    W    H
-	//sprite->setTextureRect(Rect(32, 32, 32, 32));
-
-	//sprite->setOpacity(255);
+	// スプライトの生成
+	Sprite* spr = Sprite::create("HelloWorld.png");
+	this->addChild(spr);
+	spr->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
+	// 移動アクションの生成
+	MoveTo* action1 = MoveTo::create(2.0f, Vec2(600.0f, 300.0f));
+	// ジャンプアクションの生成
+	JumpTo* action2 = JumpTo::create(1.0f, Vec2(200.0f, 200.0f), 300.0f, 2);
+	// 連続アクション（移動→ジャンプ）の生成
+	Sequence* action3 = Sequence::create(action1, action2, nullptr);
+	// アクションの実行
+	spr->runAction(action3);
 
 	// updateを有効にする
 	this->scheduleUpdate();
-
-	//counter = 0;
-
-	//// 左移動
-	//state = 0;
-
-	//rot = 0;
-
-	//blue = 0;
-
-	//opacity = 0;
 
     return true;
 }
