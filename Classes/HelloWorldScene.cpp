@@ -112,10 +112,20 @@ bool HelloWorld::init()
 	MoveTo* moveRight = MoveTo::create(5.0f, Vec2(visibleSize.width - 100, visibleSize.height - 100));
 
 	// 連続アクションの生成
-	Sequence* seq = Sequence::create(moveLeft, moveRight, nullptr);
+	Sequence* seq1 = Sequence::create(moveLeft, moveRight, nullptr);
+
+	// フェードアクションの生成
+	FadeOut* fadeOut = FadeOut::create(5.0f);
+	FadeIn* fadeIn = FadeIn::create(5.0f);
+
+	// 連続アクションの生成
+	Sequence* seq2 = Sequence::create(fadeOut, fadeIn, nullptr);
+
+	// 同時アクションの生成
+	Spawn* allAction = Spawn::create(seq1, seq2, nullptr);
 
 	// アクションの実行
-	spr->runAction(seq);
+	spr->runAction(allAction);
 
 	// updateを有効にする
 	this->scheduleUpdate();
