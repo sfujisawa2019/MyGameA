@@ -116,8 +116,11 @@ bool HelloWorld::init()
 	// 連続アクションの生成
 	Sequence* seq1 = Sequence::create(moveLeft, moveDown, moveRight, moveUp, nullptr);
 
+	// 無限繰り返しアクションの生成
+	RepeatForever* repeat = RepeatForever::create(seq1);
+
 	// アクションの実行
-	spr->runAction(seq1);
+	spr->runAction(repeat);
 
 	// updateを有効にする
 	this->scheduleUpdate();
