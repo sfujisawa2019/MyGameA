@@ -101,20 +101,21 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-	// スプライトの生成
+	// Spriteの生成
 	Sprite* spr = Sprite::create("HelloWorld.png");
 	this->addChild(spr);
-	spr->setPosition(Vec2(visibleSize.width / 2.0f, visibleSize.height / 2.0f));
-	//// スプライトの解放
-	//spr->removeFromParent();
+	spr->setPosition(Vec2(visibleSize.width - 100, visibleSize.height - 100));
+	spr->setScale(0.2f);
+
 	// 移動アクションの生成
-	JumpBy* action1 = JumpBy::create(1.0f, Vec2(100.0f, 100.0f), 100,1);
-	// スプライトの解放アクションの生成
-	RemoveSelf* action2 = RemoveSelf::create();
+	MoveTo* moveLeft = MoveTo::create(5.0f, Vec2(100, visibleSize.height - 100));
+	MoveTo* moveRight = MoveTo::create(5.0f, Vec2(visibleSize.width - 100, visibleSize.height - 100));
+
 	// 連続アクションの生成
-	Sequence* action3 = Sequence::create(action1, action2, nullptr);
+	Sequence* seq = Sequence::create(moveLeft, moveRight, nullptr);
+
 	// アクションの実行
-	spr->runAction(action3);
+	spr->runAction(seq);
 
 	// updateを有効にする
 	this->scheduleUpdate();
