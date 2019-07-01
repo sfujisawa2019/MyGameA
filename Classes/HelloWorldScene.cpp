@@ -122,7 +122,10 @@ bool HelloWorld::init()
 	Sequence* seq2 = Sequence::create(fadeOut, fadeIn, nullptr);
 
 	// 同時アクションの生成
-	Spawn* allAction = Spawn::create(seq1, seq2, nullptr);
+	Spawn* spawn = Spawn::create(seq1, seq2, nullptr);
+
+	// 繰り返しアクションの生成
+	Repeat* allAction = Repeat::create(spawn, 5);
 
 	// アクションの実行
 	spr->runAction(allAction);
