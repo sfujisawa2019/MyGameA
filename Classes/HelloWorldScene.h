@@ -35,6 +35,9 @@ public:
     virtual bool init();
 
 	void update(float delta) override;
+
+	// 自作関数
+	void myFunction();
     
     // a selector callback
     void menuCloseCallback(cocos2d::Ref* pSender);

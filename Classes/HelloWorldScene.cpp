@@ -103,6 +103,15 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
+	DelayTime* delay = DelayTime::create(1.0f);
+	// 関数呼び出しアクション
+	CallFunc* callFunc = CallFunc::create(
+		CC_CALLBACK_0(HelloWorld::myFunction, this));
+	Sequence* seq = Sequence::create(delay, callFunc, nullptr);
+
+	this->runAction(seq);
+	//myFunction();
+
 	// サウンド再生
 	audioID = experimental::AudioEngine::play2d("testbgm.mp3", true);
 
@@ -128,18 +137,12 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
-	// アプリ起動から指定時間で
-	if (Director::getInstance()->getTotalFrames() == 60)
-	{
-		// サウンド終了
-		//experimental::AudioEngine::stop(audioID);
-		//experimental::AudioEngine::stopAll();
-		// サウンド一時停止
-		experimental::AudioEngine::pause(audioID);
-	}
-	else if (Director::getInstance()->getTotalFrames() == 120)
-	{
-		// サウンド再開
-		experimental::AudioEngine::resume(audioID);
-	}
+}
+
+// 自作関数
+void HelloWorld::myFunction()
+{
+	Sprite* spr = Sprite::create("HelloWorld.png");
+	this->addChild(spr);
+	spr->setPosition(Vec2(500, 500));
 }
