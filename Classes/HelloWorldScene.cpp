@@ -103,10 +103,10 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-	DelayTime* delay = DelayTime::create(1.0f);
+	DelayTime* delay = DelayTime::create(3.0f);
 	// 関数呼び出しアクション
 	CallFunc* callFunc = CallFunc::create(
-		CC_CALLBACK_0(HelloWorld::myFunction, this));
+		CC_CALLBACK_0(HelloWorld::myFunction2, this, "nezumi.jpg"));
 	Sequence* seq = Sequence::create(delay, callFunc, nullptr);
 
 	this->runAction(seq);
@@ -143,6 +143,14 @@ void HelloWorld::update(float delta)
 void HelloWorld::myFunction()
 {
 	Sprite* spr = Sprite::create("HelloWorld.png");
+	this->addChild(spr);
+	spr->setPosition(Vec2(500, 500));
+}
+
+// 自作関数
+void HelloWorld::myFunction2(std::string filename)
+{
+	Sprite* spr = Sprite::create(filename);
 	this->addChild(spr);
 	spr->setPosition(Vec2(500, 500));
 }
