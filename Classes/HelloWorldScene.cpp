@@ -24,8 +24,10 @@
 
 #include "HelloWorldScene.h"
 #include "SimpleAudioEngine.h"
+#include "AudioEngine.h"
 
 USING_NS_CC;
+//using namespace experimental;
 
 Scene* HelloWorld::createScene()
 {
@@ -101,26 +103,8 @@ bool HelloWorld::init()
         this->addChild(label, 1);
     }
 
-	// Spriteの生成
-	Sprite* spr = Sprite::create("HelloWorld.png");
-	this->addChild(spr);
-	spr->setPosition(Vec2(visibleSize.width - 100, visibleSize.height - 100));
-	spr->setScale(0.2f);
-
-	// 移動アクションの生成
-	MoveBy* moveLeft = MoveBy::create(1.0f, Vec2(-(visibleSize.width - 200), 0));
-	MoveBy* moveDown = MoveBy::create(1.0f, Vec2(0, -(visibleSize.height - 200)));
-	MoveBy* moveRight = MoveBy::create(1.0f, Vec2(visibleSize.width - 200, 0));
-	MoveBy* moveUp = MoveBy::create(1.0f, Vec2(0, visibleSize.height - 200));
-
-	// 連続アクションの生成
-	Sequence* seq1 = Sequence::create(moveLeft, moveDown, moveRight, moveUp, nullptr);
-
-	// 無限繰り返しアクションの生成
-	RepeatForever* repeat = RepeatForever::create(seq1);
-
-	// アクションの実行
-	spr->runAction(repeat);
+	// サウンド再生
+	audioID = experimental::AudioEngine::play2d("testbgm.mp3", true);
 
 	// updateを有効にする
 	this->scheduleUpdate();
@@ -144,4 +128,18 @@ void HelloWorld::menuCloseCallback(Ref* pSender)
 
 void HelloWorld::update(float delta)
 {
+	// アプリ起動から指定時間で
+	if (Director::getInstance()->getTotalFrames() == 60)
+	{
+		// サウンド終了
+		//experimental::AudioEngine::stop(audioID);
+		//experimental::AudioEngine::stopAll();
+		// サウンド一時停止
+		experimental::AudioEngine::pause(audioID);
+	}
+	else if (Director::getInstance()->getTotalFrames() == 120)
+	{
+		// サウンド再開
+		experimental::AudioEngine::resume(audioID);
+	}
 }
