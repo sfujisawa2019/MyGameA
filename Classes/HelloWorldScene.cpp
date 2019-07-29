@@ -110,9 +110,6 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* unused_event)
 	this->addChild(spr);
 	spr->setPosition(touch_pos);
 
-	//// 画像の削除
-	//spr->removeFromParent();
-
 	return true;
 }
 
@@ -125,7 +122,8 @@ void HelloWorld::onTouchMoved(Touch* touch, Event* unused_event)
 
 void HelloWorld::onTouchEnded(Touch* touch, Event* unused_event)
 {
-	
+	// 画像の削除
+	spr->removeFromParent();
 }
 
 void HelloWorld::onTouchCancelled(Touch* touch, Event* unused_event)
