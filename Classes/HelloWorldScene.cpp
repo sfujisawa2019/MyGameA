@@ -100,12 +100,15 @@ void HelloWorld::myFunction2(std::string filename)
 
 bool HelloWorld::onTouchBegan(Touch* touch, Event* unused_event)
 {
+	
+
 	return true;
 }
 
 void HelloWorld::onTouchMoved(Touch* touch, Event* unused_event)
 {
-
+	// サウンド再生                    ファイル名
+	experimental::AudioEngine::play2d("test.mp3");
 }
 
 void HelloWorld::onTouchEnded(Touch* touch, Event* unused_event)
