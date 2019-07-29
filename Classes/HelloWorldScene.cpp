@@ -54,21 +54,6 @@ bool HelloWorld::init()
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 
-	DelayTime* delay = DelayTime::create(3.0f);
-	// 関数呼び出しアクション
-	CallFunc* callFunc = CallFunc::create(
-		CC_CALLBACK_0(HelloWorld::myFunction2, this, "nezumi.jpg"));
-	Sequence* seq = Sequence::create(delay, callFunc, nullptr);
-
-	this->runAction(seq);
-	//myFunction();
-
-	// サウンド再生
-	audioID = experimental::AudioEngine::play2d("testbgm.mp3", true);
-
-	// updateを有効にする
-	this->scheduleUpdate();
-
     return true;
 }
 
