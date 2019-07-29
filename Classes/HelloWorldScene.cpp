@@ -103,24 +103,27 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* unused_event)
 	// サウンド再生                    ファイル名
 	experimental::AudioEngine::play2d("test.mp3");
 
-	// タッチ座標を取得
-	Vec2 touch_pos = touch->getLocation();
-	// スプライト生成
-	Sprite* spr = Sprite::create("HelloWorld.png");
-	this->addChild(spr);
-	spr->setPosition(touch_pos);
+	
+
+	//// 画像の削除
+	//spr->removeFromParent();
 
 	return true;
 }
 
 void HelloWorld::onTouchMoved(Touch* touch, Event* unused_event)
 {
-
+	
 }
 
 void HelloWorld::onTouchEnded(Touch* touch, Event* unused_event)
 {
-
+	// タッチ座標を取得
+	Vec2 touch_pos = touch->getLocation();
+	// スプライト生成
+	Sprite* spr = Sprite::create("CloseNormal.png");
+	this->addChild(spr);
+	spr->setPosition(touch_pos);
 }
 
 void HelloWorld::onTouchCancelled(Touch* touch, Event* unused_event)
