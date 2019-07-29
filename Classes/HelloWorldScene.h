@@ -53,7 +53,7 @@ public:
 	// オーディオID
 	int audioID;
 
-	cocos2d::Sprite* spr;
+	cocos2d::MotionStreak* streak;
 };
 
 #endif // __HELLOWORLD_SCENE_H__

@@ -106,9 +106,9 @@ bool HelloWorld::onTouchBegan(Touch* touch, Event* unused_event)
 	// タッチ座標を取得
 	Vec2 touch_pos = touch->getLocation();
 	// スプライト生成
-	spr = Sprite::create("CloseNormal.png");
-	this->addChild(spr);
-	spr->setPosition(touch_pos);
+	streak = MotionStreak::create(0.5f, 1.0f, 50.0f, Color3B(255,255,255), "streak.png");
+	this->addChild(streak);
+	streak->setPosition(touch_pos);
 
 	return true;
 }
@@ -117,13 +117,13 @@ void HelloWorld::onTouchMoved(Touch* touch, Event* unused_event)
 {
 	// タッチ座標を取得
 	Vec2 touch_pos = touch->getLocation();
-	spr->setPosition(touch_pos);
+	streak->setPosition(touch_pos);
 }
 
 void HelloWorld::onTouchEnded(Touch* touch, Event* unused_event)
 {
 	// 画像の削除
-	spr->removeFromParent();
+	streak->removeFromParent();
 }
 
 void HelloWorld::onTouchCancelled(Touch* touch, Event* unused_event)
